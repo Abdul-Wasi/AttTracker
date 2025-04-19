@@ -1,18 +1,19 @@
 // script.js
 document.getElementById('attendanceForm').addEventListener('submit', function(e) {
     e.preventDefault();
-  
+
     const attendedClasses = parseInt(document.getElementById('attendedClasses').value);
     const totalClasses = parseInt(document.getElementById('totalClasses').value);
     const minAttendance = parseInt(document.getElementById('minAttendance').value);
-  
+
     const attendanceResult = document.getElementById('attendanceResult');
     const attendanceStatus = document.getElementById('attendanceStatus');
-  
-    // Clear previous results
+
+    // Clear previous results and remove status classes
     attendanceResult.textContent = '';
     attendanceStatus.textContent = '';
-  
+    attendanceStatus.classList.remove('green', 'red');
+
     // Validate input
     if (isNaN(attendedClasses) || isNaN(totalClasses) || isNaN(minAttendance)) {
         alert('Please enter valid numbers for all fields.');
@@ -28,26 +29,24 @@ document.getElementById('attendanceForm').addEventListener('submit', function(e)
         alert('Attended classes cannot be greater than total classes.');
         return;
     }
-  
+
     // Current attendance percentage
     const currentPercentage = (attendedClasses / totalClasses) * 100;
-    
+
     // Calculate the number of total classes required to meet the minimum attendance percentage
     const requiredTotalClasses = Math.ceil((minAttendance / 100) * (totalClasses + (totalClasses - attendedClasses)));
-    
+
     // Calculate how many future classes are needed to meet the required total classes
     const futureClassesRequired = requiredTotalClasses - attendedClasses;
 
-    // If the student is already meeting the required attendance
+    // Display the results with a bit more flair
+    attendanceResult.textContent = `Your current attendance is: ${currentPercentage.toFixed(2)}%`;
+
     if (currentPercentage >= minAttendance) {
-        attendanceResult.textContent = `Your current attendance is: ${currentPercentage.toFixed(2)}%`;
-        attendanceStatus.textContent = 'You meet the required attendance!';
+        attendanceStatus.textContent = 'Fantastic! You meet the required attendance.';
         attendanceStatus.classList.add('green');
-        attendanceStatus.classList.remove('red');
     } else {
-        attendanceResult.textContent = `Your current attendance is: ${currentPercentage.toFixed(2)}%`;
-        attendanceStatus.textContent = `To get ${minAttendance}% attendance, you need to attend ${futureClassesRequired} more classes.`;
+        attendanceStatus.textContent = `Keep going! You need to attend ${futureClassesRequired} more classes to reach ${minAttendance}% attendance.`;
         attendanceStatus.classList.add('red');
-        attendanceStatus.classList.remove('green');
     }
 });

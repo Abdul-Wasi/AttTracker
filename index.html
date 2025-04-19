@@ -3,31 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AttTracker</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>AttTracker - Level Up Your Attendance!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="calculator">
-            <h1>Attendance Calculator</h1>
+            <div class="header">
+                <svg viewBox="0 0 512 512" fill="currentColor">
+                    <path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zM176 192c-44.18 0-80 35.82-80 80s35.82 80 80 80 80-35.82 80-80-35.82-80-80-80zm160 0c-44.18 0-80 35.82-80 80s35.82 80 80 80 80-35.82 80-80-35.82-80-80-80zM464 400c-8.84 0-16-7.16-16-16v-32c0-8.84 7.16-16 16-16h16c8.84 0 16 7.16 16 16v32c0 8.84-7.16 16-16 16h-16zm-96 0c-8.84 0-16-7.16-16-16v-32c0-8.84 7.16-16 16-16h16c8.84 0 16 7.16 16 16v32c0 8.84-7.16 16-16 16h-16zm-96 0c-8.84 0-16-7.16-16-16v-32c0-8.84 7.16-16 16-16h16c8.84 0 16 7.16 16 16v32c0 8.84-7.16 16-16 16h-16zm-96 0c-8.84 0-16-7.16-16-16v-32c0-8.84 7.16-16 16-16h16c8.84 0 16 7.16 16 16v32c0 8.84-7.16 16-16 16h-16z"/>
+                </svg>
+                <h1>AttTracker</h1>
+                <p class="tagline">Stay on top of your classes!</p>
+            </div>
             <form id="attendanceForm">
                 <div class="input-group">
                     <label for="attendedClasses">Classes Attended</label>
-                    <input type="number" id="attendedClasses" required>
+                    <input type="number" id="attendedClasses" placeholder="Enter attended classes" required>
                 </div>
                 <div class="input-group">
                     <label for="totalClasses">Total Classes Held</label>
-                    <input type="number" id="totalClasses" required>
+                    <input type="number" id="totalClasses" placeholder="Enter total classes" required>
                 </div>
                 <div class="input-group">
                     <label for="minAttendance">Minimum Attendance (%)</label>
-                    <input type="number" id="minAttendance" required>
+                    <input type="number" id="minAttendance" placeholder="Enter minimum percentage" required>
                 </div>
-                <button type="submit" class="submit-btn">Calculate</button>
+                <button type="submit" class="submit-btn">Calculate <svg viewBox="0 0 512 512" fill="currentColor"><path d="M438.6 278.6l-160 160c-4.164 4.164-10.89 4.164-15.05 0l-80-80c-4.164-4.164-4.164-10.89 0-15.05s10.89-4.164 15.05 0L384 318.9l144.6-144.6c4.164-4.164 10.89-4.164 15.05 0s4.164 10.89 0 15.05z"/><path d="M504.1 256C504.1 119 393 7.943 256 7.943S7.943 119 7.943 256c0 136.9 111.1 248 248.1 248S504.1 392.9 504.1 256zM256 464c-114.7 0-208-93.31-208-208S141.3 48 256 48s208 93.31 208 208-93.31 208-208 208z"/></svg></button>
             </form>
             <div id="attendanceResult" class="result"></div>
             <div id="attendanceStatus" class="status"></div>
+            <div class="animation-bg">
+                <div class="circle circle-1"></div>
+                <div class="circle circle-2"></div>
+                <div class="circle circle-3"></div>
+            </div>
         </div>
     </div>
 

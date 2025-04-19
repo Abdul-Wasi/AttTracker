@@ -3,93 +3,236 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
-    background-color: #f4f7fa;
+    background: linear-gradient(135deg, #636fa0, #e8cbc0); /* Engaging gradient background */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    padding: 0 20px;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: hidden; /* To contain the background animation */
 }
 
 .container {
-    max-width: 600px;
+    max-width: 500px; /* Slightly reduced max-width for a more focused look */
     width: 100%;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white for a modern feel */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    padding: 40px;
     text-align: center;
+    position: relative; /* For positioning the background animation */
+    z-index: 1; /* To ensure content is above the animation */
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.header svg {
+    width: 40px;
+    height: 40px;
+    color: #5e72eb; /* A vibrant primary color */
+    margin-bottom: 10px;
+    animation: pulse 2s infinite alternate; /* Subtle pulse animation for the icon */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
 }
 
 .calculator h1 {
-    font-size: 2rem;
-    margin-bottom: 30px;
+    font-size: 2.5rem;
     color: #333;
+    margin-bottom: 5px;
+}
+
+.calculator p.tagline {
+    color: #777;
+    font-style: italic;
+    font-size: 0.9rem;
 }
 
 .input-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: left;
 }
 
 .input-group label {
+    display: block;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #555;
+    margin-bottom: 8px;
 }
 
 .input-group input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 5px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1rem;
     color: #333;
+    transition: border-color 0.3s ease;
 }
 
 .input-group input:focus {
     outline: none;
-    border-color: #4A90E2;
+    border-color: #5e72eb; /* Focus color */
+    box-shadow: 0 0 5px rgba(94, 114, 235, 0.5); /* Subtle focus shadow */
 }
 
 .submit-btn {
-    background-color: #4A90E2;
+    background-color: #5e72eb; /* Vibrant submit button color */
     color: white;
-    padding: 12px 25px;
+    padding: 14px 30px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1.2rem;
     cursor: pointer;
     width: 100%;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-btn svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
 }
 
 .submit-btn:hover {
-    background-color: #357ABD;
+    background-color: #4a69d4;
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .result {
-    font-size: 1.2rem;
-    margin-top: 20px;
+    font-size: 1.3rem;
+    margin-top: 30px;
     color: #333;
+    font-weight: bold;
 }
 
 .status {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
-    margin-top: 10px;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .status.green {
-    color: green;
+    color: #28a745;
+    background-color: #f0fff4;
+    border: 1px solid #c3e6cb;
 }
 
 .status.red {
-    color: red;
+    color: #dc3545;
+    background-color: #fdecea;
+    border: 1px solid #f5c6cb;
+}
+
+/* Background Animation */
+.animation-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none; /* Allows clicks to pass through */
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to right, #5e72eb, #868eef);
+    animation: moveCircles 15s infinite linear;
+}
+
+.circle-1 {
+    width: 60px;
+    height: 60px;
+    top: 10%;
+    left: 40%;
+    animation-delay: 0s;
+}
+
+.circle-2 {
+    width: 40px;
+    height: 40px;
+    top: 80%;
+    left: 15%;
+    animation-delay: 5s;
+}
+
+.circle-3 {
+    width: 70px;
+    height: 70px;
+    top: 30%;
+    left: 85%;
+    animation-delay: 10s;
+}
+
+@keyframes moveCircles {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-200px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px;
+        margin: 20px;
+        border-radius: 10px;
+    }
+
+    .calculator h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+    }
+
+    .submit-btn {
+        padding: 12px 25px;
+        font-size: 1.1rem;
+        margin-top: 20px;
+    }
+
+    .result {
+        font-size: 1.2rem;
+        margin-top: 20px;
+    }
+
+    .status {
+        font-size: 1rem;
+        margin-top: 10px;
+    }
 }
